@@ -16,6 +16,7 @@ source('pls.perm.boot.R')
 
 pls.res <- pls.perm.boot(X,Y,nperm=10,nboot=10, col_names = colnames(X))
 
+pls.res <- pls.perm.boot(X,Y,nperm=10,nboot=10, col_names = colnames(X))
 
 
 

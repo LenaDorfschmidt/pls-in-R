@@ -28,8 +28,9 @@ pls.perm.boot = function(X,Y,ncomp=NULL,nperm=NULL,nboot=NULL,col_names=NULL, ou
   if(!is.numeric(Y)){
     if (dim(Y)[2]>1) {
       Y = apply(Y, 2,function(x) as.numeric(as.character(x)))
+    }else{
+      Y = as.numeric(Y)
     }
-    Y = as.numeric(Y)
   }
   
   if(is.null(dim(Y)[2])){ # Reformat Y to matrix
@@ -105,7 +106,7 @@ pls.perm.boot = function(X,Y,ncomp=NULL,nperm=NULL,nboot=NULL,col_names=NULL, ou
     print(paste0('Permutation: ',perm))
     
     # Permute Y randomly
-    order = sample(1:nsamples) 
+    order = sample(1:dim(Y)[1]) 
     # Recalculate PLS with permuted Y
     if (dim(Y)[2]==1) {
       perm.model = plsreg1(X, Y[order], comps=ncomp)
